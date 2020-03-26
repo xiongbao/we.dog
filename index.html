@@ -135,7 +135,22 @@
     footer em {display: block;font-style: normal;letter-spacing: 1px;font-size: .16rem;color:#b0b0b0;} 
     @media (min-width: 750px) {
       html {font-size: 100px;}
-      section {margin: auto;max-width: 750px;}
+      section {
+        margin: auto;
+        max-width: 80%;
+        border: 0 none;
+        background-color: transparent;
+        border-radius: none;
+      }
+      article {padding:0 .4rem;}
+      address {justify-content: flex-end;}
+      address time {margin-right: .15rem;}
+    }
+    @media (orientation : landscape) and (min-width: 750px) {
+      header {padding: 10px 20px;}
+      header img {width: 36px;height: 36px;}
+      header h1 {font-size: 32px;margin-top:5px;}
+      header p {font-size: 18px;margin:0 0 0 auto;}
     }
   </style>
 <script src="./assets/js/jquery.js"></script>
