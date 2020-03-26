@@ -162,25 +162,39 @@
     var num = min + Math.round(rand * range);
     return num;
   }
-  document.getElementsByTagName('section')[0].className = 'border-' + randomNumBoth(1,6);
-  $(function(){
-    /* 获取天气 */
+  var date = new Date();
+  var year = date.getFullYear().toString(); 
+  var month = (date.getMonth() + 1).toString();
+  var day = date.getDate().toString();
+
+  var city = localStorage.getItem('city') || '';
+  var cloud = localStorage.getItem('cloud') || '';
+  var cond = localStorage.getItem('cond') || '';
+  var dateStart = new Date(localStorage.getItem('date') || new Date());
+  var dayDiff = date.getDate() - dateStart.getDate();
+  if(city == '') {
     $.post(
       'https://free-api.heweather.net/s6/weather/now?location=auto_ip&key=2a0c9b13dec6442887f73698a9be5f4b',
       function(data){
         var weather = data.HeWeather6[0] || {};
-        var city = weather.basic.parent_city || '';
-        var cloud = weather.now.fl || ''
-        var cond = weather.now.cond_txt || ''
-        var date = new Date();
-        var year = date.getFullYear().toString(); 
-        var month = (date.getMonth() + 1).toString();
-        var day = date.getDate().toString();
-        var weatherHTML = '<time>'+ year+'-'+month+'-'+day+'</time><span>'+city+'·'+cond+'·'+cloud+'&#8451;</span>'
-        $('address').html(weatherHTML);
+        city = weather.basic.parent_city || '';
+        cloud = weather.now.fl || ''
+        cond = weather.now.cond_txt || ''
+        localStorage.setItem('city',city);
+        localStorage.setItem('cloud',cloud);
+        localStorage.setItem('cond',cond);
+        localStorage.setItem('date',new Date());
+        renderWeather();
       },'json'
     ) // 天气结束
-  })
+  } else {
+    renderWeather();
+  }
+  function renderWeather(){
+    var weatherHTML = '<time>'+ year+'-'+month+'-'+day+'</time><span>'+city+'·'+cond+'·'+cloud+'&#8451;</span>'
+    $('address').html(weatherHTML);
+  }
+
 </script>
 <script>
 var _hmt = _hmt || [];
