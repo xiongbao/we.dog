@@ -172,7 +172,7 @@
   var cond = localStorage.getItem('cond') || '';
   var dateStart = new Date(localStorage.getItem('date') || new Date());
   var dayDiff = date.getDate() - dateStart.getDate();
-  if(city == '') {
+  if(city == '' || dayDiff >= 1) {
     $.post(
       'https://free-api.heweather.net/s6/weather/now?location=auto_ip&key=2a0c9b13dec6442887f73698a9be5f4b',
       function(data){
