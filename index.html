@@ -148,21 +148,19 @@
     address time {margin-right: auto;}
     footer {
       flex-shrink: 0;
-      text-transform: uppercase;
       text-align: center;
-      padding: .2rem 0;
+      padding: 0 0 .5rem;
+      padding-bottom: calc(constant(safe-area-inset-bottom) + .5rem);
+      padding-bottom: calc(env(safe-area-inset-bottom) + .5rem);
       margin: .45rem 0 0;
-      font-size: .2rem;
-      font-weight: 300;
-      color: #808080;
     }
     button {
       border: 0 none;
       margin: 0;
       padding: 0;
       background-color: #fff;
-      width: .6rem;
-      height: .6rem;
+      width: 1rem;
+      height: 1rem;
       color: transparent;
       border-radius: 100%;
       background-image: url(./assets/images/refresh.gif);
