@@ -1,0 +1,195 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>舔狗</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="144x144" href="assets/images/favicon.png">
+  <link rel="apple-touch-icon" type="image/png" href="assets/images/favicon.png">
+  <style>
+    @font-face {
+      font-family: 'MFShangYa';
+      src: url('./assets/font/MFShangYa.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'HYTiaoTiao';
+      src: url('./assets/font/HYTiaoTiao.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    .border-1 {
+      border-bottom-left-radius: 15px 255px;
+      border-bottom-right-radius: 225px 15px;
+      border-top-left-radius: 255px 15px;
+      border-top-right-radius: 15px 225px
+    }
+    .border-2 {
+      border-bottom-left-radius: 185px 25px;
+      border-bottom-right-radius: 20px 205px;
+      border-top-left-radius: 125px 25px;
+      border-top-right-radius: 10px 205px
+    }
+    .border-3 {
+      border-bottom-left-radius: 225px 15px;
+      border-bottom-right-radius: 15px 255px;
+      border-top-left-radius: 15px 225px;
+      border-top-right-radius: 255px 15px
+    }
+    .border-4 {
+      border-bottom-left-radius: 25px 115px;
+      border-bottom-right-radius: 155px 25px;
+      border-top-left-radius: 15px 225px;
+      border-top-right-radius: 25px 150px
+    }
+    .border-5 {
+      border-bottom-left-radius: 20px 115px;
+      border-bottom-right-radius: 115px 20px;
+      border-top-left-radius: 250px 15px;
+      border-top-right-radius: 25px 80px
+    }
+    .border-6 {
+      border-bottom-left-radius: 15px 225px;
+      border-bottom-right-radius: 20px 205px;
+      border-top-left-radius: 28px 125px;
+      border-top-right-radius: 100px 30px
+    }
+    html,body {margin:0;padding:0;height:100%;width:100%;color:#333;}
+    html {font-size: 13.3333vw;}
+    body {
+      display: flex;
+      flex-direction: column;
+  	  font-family:-apple-system,'Helvetica Neue','Helvetica','Tahoma','Arial','PingFang SC',STHeiTi,'Microsoft Yahei';
+      font-size: 16px;
+      background-color: #f4f5fd;
+  	}
+    mark {
+      background-color: transparent;
+      background-image: -webkit-linear-gradient(#ffe21d, #ffe21d);
+      background-image: -o-linear-gradient(#ffe21d, #ffe21d);
+      background-image: linear-gradient(#ffe21d, #ffe21d);
+      background-position: 0 85%;
+      background-size: 100% 20%;
+      background-repeat: no-repeat;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      padding: .2rem .4rem;
+      margin: 0 0 .45rem;
+      flex-shrink: 0;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,.1);
+    }
+    header img {width:.72rem;height: .72rem;}
+    header h1 {margin:.1rem 0 0;font-size: .64rem;line-height: 105%;font-family: "MFShangYa";font-weight: normal;}
+    header p {font-size: .32rem;margin: .08rem 0 0 auto;font-family: "HYTiaoTiao"}
+    section {
+      font-family: "HYTiaoTiao";
+      margin: auto .4rem;
+      border-width: 2px 5px 4px 3px;
+      border-style: solid;
+      border-color: #03081a;
+      overflow-y: scroll;
+      display: flex;
+      flex-direction: column;
+      background-color: #fff;
+    }
+    article img {display: none;}
+    article {
+      font-size: .45rem;
+      margin: 0;
+      padding: .4rem;
+      letter-spacing: 2px;
+      color: #03081A;
+      text-align: justify;
+      flex: 1;
+      overflow-y: scroll;
+    }
+    address {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      height: .8rem;
+      margin: 0 .4rem;
+      font-style: normal;
+      color: #8c8c8c;
+    }
+    address time {margin-right: auto;}
+    footer {
+      flex-shrink: 0;
+      text-transform: uppercase;
+      text-align: center;
+      padding: .2rem 0;
+      margin: .45rem 0 0;
+      font-size: .2rem;
+      font-weight: 300;
+      color: #808080;
+    }
+    footer em {display: block;font-style: normal;letter-spacing: 1px;font-size: .16rem;color:#b0b0b0;} 
+    @media (min-width: 750px) {
+      html {font-size: 100px;}
+      section {margin: auto;max-width: 750px;}
+    }
+  </style>
+<script src="./assets/js/jquery.js"></script>
+</head>
+
+<body onclick="randomSoul()">
+  <header>
+    <img src="./assets/images/logo.gif" alt="logo">
+    <h1>舔狗</h1>
+    <p>我们是狗，舔狗</p>
+  </header>
+  <section class="border-1">
+    <article>
+      昨天你领完红包就把我删了，我陷入久久地沉思。我想这其中一定有什么含义，原来你是在欲擒故纵，嫌我不够爱你。无理取闹的你变得更加可爱了，我会<mark>坚守我对你的爱</mark>的。你放心好啦！今天发工资了，发了1850，给你微信转了520，支付宝1314，还剩下16。给你发了很多消息你没回。剩下16块我在小卖部买了你爱吃的老坛酸菜牛肉面，给你寄过去了。希望你保护好食欲，我去上班了爱你~~
+    </article>
+    <address></address>
+  </section>
+  <footer>点击页面，再来一篇<em>&copy;2020 WE.DOG</em></footer>
+<script src="./assets/js/index.js"></script>
+<script>
+  randomSoul();
+  function randomNumBoth(min,max){
+    var range = max - min;
+    var rand = Math.random();
+    var num = min + Math.round(rand * range);
+    return num;
+  }
+  document.getElementsByTagName('section')[0].className = 'border-' + randomNumBoth(1,6);
+  $(function(){
+    /* 获取天气 */
+    $.post(
+      'https://free-api.heweather.net/s6/weather/now?location=auto_ip&key=2a0c9b13dec6442887f73698a9be5f4b',
+      function(data){
+        var weather = data.HeWeather6[0] || {};
+        var city = weather.basic.parent_city || '';
+        var cloud = weather.now.fl || ''
+        var cond = weather.now.cond_txt || ''
+        var date = new Date();
+        var year = date.getFullYear().toString(); 
+        var month = (date.getMonth() + 1).toString();
+        var day = date.getDate().toString();
+        var weatherHTML = '<time>'+ year+'-'+month+'-'+day+'</time><span>'+city+'·'+cond+'·'+cloud+'&#8451;</span>'
+        $('address').html(weatherHTML);
+      },'json'
+    ) // 天气结束
+  })
+</script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?a3bfaec321165f405968b4625458d552";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</body>
+</html>
