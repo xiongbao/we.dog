@@ -156,6 +156,23 @@
       font-weight: 300;
       color: #808080;
     }
+    button {
+      border: 0 none;
+      margin: 0;
+      padding: 0;
+      background-color: #fff;
+      width: .6rem;
+      height: .6rem;
+      color: transparent;
+      border-radius: 100%;
+      background-image: url(./assets/images/refresh.gif);
+      background-size: cover;
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      box-shadow: 0 0 0.2rem rgba(0,0,0,.2);
+      cursor: pointer;
+      outline: 0;
+    }
     footer em {display: block;font-style: normal;letter-spacing: 1px;font-size: .16rem;color:#b0b0b0;} 
     @media (min-width: 750px) {
       html {font-size: 100px;}
@@ -180,7 +197,7 @@
 <script src="./assets/js/jquery.js"></script>
 </head>
 
-<body onclick="randomSoul()">
+<body>
   <header>
     <img src="./assets/images/logo.gif" alt="logo">
     <h1>舔狗</h1>
@@ -192,7 +209,7 @@
     </article>
     <address></address>
   </section>
-  <footer>点击页面，再来一篇<em>&copy;2020 WE.DOG</em></footer>
+  <footer><button title="点击刷新，再来一篇" onclick="randomSoul()">再来一篇</button></footer>
 <script src="./assets/js/index.js"></script>
 <script>
   randomSoul();
