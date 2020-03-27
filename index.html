@@ -229,7 +229,7 @@
   var dayDiff = date.getDate() - dateStart.getDate();
   if(city == '' || dayDiff >= 1) {
     $.post(
-      'https://free-api.heweather.net/s6/weather/now?location=auto_ip&key=2a0c9b13dec6442887f73698a9be5f4b',
+      'https://free-api.heweather.net/s6/weather/now?location=auto_ip&key=填你自己的',
       function(data){
         var weather = data.HeWeather6[0] || {};
         city = weather.basic.parent_city || '';
