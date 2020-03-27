@@ -10,30 +10,6 @@
   <link rel="icon" type="image/png" href="assets/images/logo.jpg">
   <link rel="icon" type="image/png" sizes="144x144" href="assets/images/logo.jpg">
   <link rel="apple-touch-icon" type="image/png" href="assets/images/logo.jpg">
-  <script>
-    var favicon_images = [
-                    './assets/images/favicon/0.jpg',
-                    './assets/images/favicon/1.jpg',
-                    './assets/images/favicon/2.jpg',
-                    './assets/images/favicon/3.jpg',
-                    './assets/images/favicon/4.jpg',
-                    './assets/images/favicon/5.jpg'
-                ],
-    image_counter = 0; // To keep track of the current image
-
-    setInterval(function() {
-        $("link[rel='icon']").remove();
-        $("link[rel='shortcut icon']").remove();
-        $("head").append('<link rel="icon" href="' + favicon_images[image_counter] + '" type="image/jpeg">');
-        
-      // If last image then goto first image
-      // Else go to next image    
-      if(image_counter == favicon_images.length -1)
-            image_counter = 0;
-        else
-            image_counter++;
-    }, 80);
-  </script>
   <style>
     @font-face {
       font-family: 'MFShangYa';
@@ -199,6 +175,30 @@
     }
   </style>
 <script src="./assets/js/jquery.js"></script>
+<script>
+  var favicon_images = [
+                  './assets/images/favicon/0.jpg',
+                  './assets/images/favicon/1.jpg',
+                  './assets/images/favicon/2.jpg',
+                  './assets/images/favicon/3.jpg',
+                  './assets/images/favicon/4.jpg',
+                  './assets/images/favicon/5.jpg'
+              ],
+  image_counter = 0; // To keep track of the current image
+
+  setInterval(function() {
+      $("link[rel='icon']").remove();
+      $("link[rel='shortcut icon']").remove();
+      $("head").append('<link rel="icon" href="' + favicon_images[image_counter] + '" type="image/jpeg">');
+      
+    // If last image then goto first image
+    // Else go to next image    
+    if(image_counter == favicon_images.length -1)
+          image_counter = 0;
+      else
+          image_counter++;
+  }, 80);
+</script>
 </head>
 
 <body>
