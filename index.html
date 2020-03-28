@@ -67,6 +67,7 @@
   	  font-family:-apple-system,'Helvetica Neue','Helvetica','Tahoma','Arial','PingFang SC',STHeiTi,'Microsoft Yahei';
       font-size: 16px;
       background-color: #f4f5fd;
+      color: #03081a;
   	}
     mark {
       background-color: transparent;
@@ -108,7 +109,6 @@
       margin: 0;
       padding: .4rem;
       letter-spacing: 2px;
-      color: #03081A;
       text-align: justify;
       flex: 1;
       overflow-y: scroll;
@@ -129,8 +129,10 @@
     }
     address time {margin-right: auto;}
     footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       flex-shrink: 0;
-      text-align: center;
       padding: 0 0 .5rem;
       padding-bottom: calc(constant(safe-area-inset-bottom) + .5rem);
       padding-bottom: calc(env(safe-area-inset-bottom) + .5rem);
@@ -138,7 +140,7 @@
     }
     button {
       border: 0 none;
-      margin: 0;
+      margin: 0 .3rem;
       padding: 0;
       background-color: #fff;
       width: 1rem;
@@ -153,7 +155,31 @@
       cursor: pointer;
       outline: 0;
     }
-    footer em {display: block;font-style: normal;letter-spacing: 1px;font-size: .16rem;color:#b0b0b0;} 
+    footer a,
+    footer a:active,
+    footer a:visited {
+      vertical-align: middle;
+      text-decoration: none;
+      font-size: .32rem;
+      color: #3078e6;
+      padding: .2rem;
+    }
+    footer a:hover {
+      color: #03081a;
+    }
+
+    tips {
+      display: none;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      background-color: rgba(0,0,0,.5);
+      border-radius: .04rem;
+      font-size: .32rem;
+      padding: .12rem .24rem;
+      color: #fff;
+    }
     @media (min-width: 750px) {
       html {font-size: 100px;}
       section {
@@ -237,10 +263,21 @@
     </article>
     <address></address>
   </section>
-  <footer><button title="点击刷新，再来一篇" onclick="randomSoul()">再来一篇</button></footer>
+  <footer><a href="https://docs.qq.com/form/fill/DR1VHTXpjTkJ3SG9z?_w_tencentdocx_form=1" target="_blank">投稿</a><button title="点击刷新，再来一篇" onclick="randomSoul()">再来一篇</button><a href="javascript:;" data-btn="copy" data-clipboard-target="article">复制</a></footer>
+  <tips>已复制</tips>
 <script src="./assets/js/index.js"></script>
+<script src="https://cdn.bootcss.com/clipboard.js/2.0.6/clipboard.min.js"></script>
 <script>
   randomSoul();
+  var clipboard = new ClipboardJS('a[data-btn="copy"]');
+  clipboard.on('success', function(e) {
+      $('tips').show(
+        setTimeout(function() {
+          $('tips').hide()
+        }, 1500)
+      );
+      e.clearSelection();
+  });
   function randomNumBoth(min,max){
     var range = max - min;
     var rand = Math.random();
