@@ -3,8 +3,10 @@
 <head>
   <meta charset="utf-8">
   <title>舔狗</title>
-  <meta name="description" content="">
   <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta itemprop="name" content="舔狗日记">
+  <meta name="description" itemprop="description" content="舔狗舔狗，舔到最后一无所有。">
+  <meta itemprop="image" content="assets/images/logo.jpg">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <link rel="icon" type="image/png" href="assets/images/logo.jpg">
@@ -268,7 +270,9 @@
 <script src="./assets/js/index.js"></script>
 <script src="https://cdn.bootcss.com/clipboard.js/2.0.6/clipboard.min.js"></script>
 <script>
+  var content = '';
   randomSoul();
+  $('meta[name="description"]').attr('content',content.replace(/\*\*(.*?)\*\*/g,''));
   var clipboard = new ClipboardJS('a[data-btn="copy"]');
   clipboard.on('success', function(e) {
       $('tips').show(
