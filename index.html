@@ -176,28 +176,52 @@
   </style>
 <script src="./assets/js/jquery.js"></script>
 <script>
-  var favicon_images = [
-                  './assets/images/favicon/0.jpg',
-                  './assets/images/favicon/1.jpg',
-                  './assets/images/favicon/2.jpg',
-                  './assets/images/favicon/3.jpg',
-                  './assets/images/favicon/4.jpg',
-                  './assets/images/favicon/5.jpg'
-              ],
-  image_counter = 0; // To keep track of the current image
+  function getOS() {
+    var userAgent = window.navigator.userAgent,
+        platform = window.navigator.platform,
+        macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
+        windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
+        iosPlatforms = ['iPhone', 'iPad', 'iPod'],
+        os = null;
+    if (macosPlatforms.indexOf(platform) !== -1) {
+      os = 'Mac OS';
+    } else if (iosPlatforms.indexOf(platform) !== -1) {
+      os = 'iOS';
+    } else if (windowsPlatforms.indexOf(platform) !== -1) {
+      os = 'Windows';
+    } else if (/Android/.test(userAgent)) {
+      os = 'Android';
+    } else if (!os && /Linux/.test(platform)) {
+      os = 'Linux';
+    }
+    return os;
+  }
+  var os = getOS();
+  if(os !== 'iOS' || os !== 'Android') {
+    // 非移动端平台下才设置动态favicon
+    var favicon_images = [
+                    './assets/images/favicon/0.jpg',
+                    './assets/images/favicon/1.jpg',
+                    './assets/images/favicon/2.jpg',
+                    './assets/images/favicon/3.jpg',
+                    './assets/images/favicon/4.jpg',
+                    './assets/images/favicon/5.jpg'
+                ],
+    image_counter = 0; // To keep track of the current image
 
-  setInterval(function() {
-      $("link[rel='icon']").remove();
-      $("link[rel='shortcut icon']").remove();
-      $("head").append('<link rel="icon" href="' + favicon_images[image_counter] + '" type="image/jpeg">');
-      
-    // If last image then goto first image
-    // Else go to next image    
-    if(image_counter == favicon_images.length -1)
-          image_counter = 0;
-      else
-          image_counter++;
-  }, 80);
+    setInterval(function() {
+        $("link[rel='icon']").remove();
+        $("link[rel='shortcut icon']").remove();
+        $("head").append('<link rel="icon" href="' + favicon_images[image_counter] + '" type="image/jpeg">');
+        
+      // If last image then goto first image
+      // Else go to next image    
+      if(image_counter == favicon_images.length -1)
+            image_counter = 0;
+        else
+            image_counter++;
+    }, 80);
+  }
 </script>
 </head>
 
@@ -233,23 +257,35 @@
   var cond = localStorage.getItem('cond') || '';
   var dateStart = new Date(localStorage.getItem('date') || new Date());
   var dayDiff = date.getDate() - dateStart.getDate();
+  var weatherKeys = ['fbb7fed63979495f88fc1ddc7296f497','f3488e987bce466d8ae6b523becf278f','95cf38cd40b84df9beae340c610e8550','3cad9669ecba42c39ebfd73cdb566329','6ec2f3eef9bc448ba8a72e815dd86f12'];
   if(city == '' || dayDiff >= 1) {
-    $.post(
-      'https://free-api.heweather.net/s6/weather/now?location=auto_ip&key=填你自己的',
-      function(data){
-        var weather = data.HeWeather6[0] || {};
-        city = weather.basic.parent_city || '';
-        cloud = weather.now.fl || ''
-        cond = weather.now.cond_txt || ''
-        localStorage.setItem('city',city);
-        localStorage.setItem('cloud',cloud);
-        localStorage.setItem('cond',cond);
-        localStorage.setItem('date',new Date());
-        renderWeather();
-      },'json'
-    ) // 天气结束
-  } else {
-    renderWeather();
+    var weather = {};
+    for(var i=0;i < weatherKeys.length; i++) {
+      weather = getWeather(weatherKeys[i]);
+      console.log(weatherKeys[i]+':'+weather.status)
+      if (weather.status == 'ok') { break };
+    }
+    city = weather.basic.parent_city || '';
+    cloud = weather.now.fl || ''
+    cond = weather.now.cond_txt || ''
+    localStorage.setItem('city',city);
+    localStorage.setItem('cloud',cloud);
+    localStorage.setItem('cond',cond);
+    localStorage.setItem('date',new Date());
+  }
+  renderWeather();
+
+  function getWeather(key) {
+    var weatherData = {};
+    $.ajax({
+      url: 'https://free-api.heweather.net/s6/weather/now?location=auto_ip&key='+key,
+      type: 'get',
+      async: false,
+      success : function(data){
+        weatherData = data.HeWeather6[0];
+      }
+    });
+    return weatherData;
   }
   function renderWeather(){
     var weatherHTML = '<time>'+ year+'-'+month+'-'+day+'</time><span>'+city+'·'+cond+'·'+cloud+'&#8451;</span>'
