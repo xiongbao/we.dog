@@ -141,6 +141,7 @@
       padding-bottom: calc(constant(safe-area-inset-bottom) + .5rem);
       padding-bottom: calc(env(safe-area-inset-bottom) + .5rem);
       margin: .45rem 0 0;
+      position: relative;
     }
     button {
       border: 0 none;
@@ -155,7 +156,7 @@
       background-size: cover;
       background-position: 50% 50%;
       background-repeat: no-repeat;
-      box-shadow: 0 0 0.2rem rgba(0,0,0,.2);
+      box-shadow: 0 0 0.2rem rgba(0,21,110,.1);
       cursor: pointer;
       outline: 0;
     }
@@ -170,6 +171,32 @@
     }
     footer a:hover {
       color: #03081a;
+    }
+
+    footer a.home-link {
+      position: absolute;
+      bottom: 160%;
+      left: auto;
+      right: auto;
+      background-color: #ffe21d;
+      box-shadow: 0 0 .2rem rgba(0,21,110,.1);
+      padding: .1rem .3rem;
+      border-radius: 1rem;
+      color: initial;
+      font-size: .28rem;
+    }
+    footer a.home-link:hover {
+      background-color: #ffbf1d;
+    }
+    footer a.home-link::after {
+      content: "\8214\72d7\4e4b\5bb6\5df2\4e0a\7ebf\a\6b22\8fce\8214\72d7\4eec\5165\9a7b";
+      position: absolute;
+      white-space: pre-wrap;
+      left: 0;right: 0;
+      text-align: center;
+      top: 110%;
+      font-size: .14rem;
+      color: rgba(0,21,110,.3);
     }
 
     tips {
@@ -267,7 +294,11 @@
     </article>
     <address></address>
   </section>
-  <footer><a href="https://docs.qq.com/form/fill/DR1VHTXpjTkJ3SG9z?_w_tencentdocx_form=1" target="_blank">投稿</a><button title="点击刷新，再来一篇" onclick="randomSoul()">再来一篇</button><a href="javascript:;" data-btn="copy" data-clipboard-target="article">复制</a></footer>
+  <footer>
+    <a class="home-link" href="https://papa.pa/">舔狗之家</a>
+    <a href="https://docs.qq.com/form/fill/DR1VHTXpjTkJ3SG9z?_w_tencentdocx_form=1" target="_blank">投稿</a>
+    <button title="点击刷新，再来一篇" onclick="randomSoul()">再来一篇</button><a href="javascript:;" data-btn="copy" data-clipboard-target="article">复制</a>
+  </footer>
   <tips>已复制</tips>
 <script src="./assets/js/index.js?20201105"></script>
 <script src="https://cdn.bootcss.com/clipboard.js/2.0.6/clipboard.min.js"></script>
